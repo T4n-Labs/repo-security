@@ -1,0 +1,83 @@
+name: Build and Deploy XBPS Repository
+
+on:
+  push:
+    branches: [ main ]
+    paths:                      # hanya jalan jika ada yang relevan berubah
+      - 'x86_64/**'
+      - 'i686/**'
+      - 'aarch64/**'
+      - 'armv6l/**'
+      - 'armv7l/**'
+      - 'pkg-recipe/**'
+      - 'install.sh'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read                # tidak ada push balik ke repo
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/void-linux/void-glibc-full:latest
+
+    steps:
+      - name: Install tools
+        run: |
+          xbps-install -Syu xbps
+          xbps-install -Syu
+          xbps-install -y bash
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Semua file turunan (repodata, .sig2, packages.json, index.html) dibuat di sini
+      # dan langsung dideploy ke Pages. Tidak di-commit ke repo.
+      - name: Index and sign packages
+        env:
+          SIGN_KEY: ${{ secrets.SIGN_KEY }}
+        run: bash .github/workflows/signature.sh
+
+      - name: Generate index files
+        run: bash .github/workflows/autogen-index.sh
+
+      - name: Generate packages.json
+        run: bash .github/workflows/autogen-json.sh
+
+      # Hanya yang perlu dilayani: folder arsitektur + index root.
+      # (pkg-recipe, tools, keys, vdocs, dll. tidak ikut). install.sh ikut karena README merujuknya.
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          for d in x86_64 i686 aarch64 armv6l armv7l; do
+            if [ -d "$d" ]; then cp -r "$d" _site/; fi
+          done
+          cp index.html _site/
+          if [ -f install.sh ]; then cp install.sh _site/; fi
+          ls -R _site | head -60
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

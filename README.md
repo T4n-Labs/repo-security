@@ -1,8 +1,8 @@
-# T4n OS Repository - glibc • [ID](README-ID.md)
+# T4n OS Repository - security • [ID](README-ID.md)
 
-Official XBPS (X Binary Package System) package repository for **T4n OS** based on `glibc`. This repository provides pre-compiled, automatically signed, and ready-to-use binary packages for various architectures.
+Official XBPS (X Binary Package System) package repository for **T4n OS** based on `security`. This repository provides pre-compiled, automatically signed, and ready-to-use binary packages for various architectures.
 
-🔍 **Search Packages:** Use our web-based package search engine at **[repo.t4nlabs.web.id/site/glibc.html](https://repo.t4nlabs.web.id/site/glibc.html)** to easily browse, filter, and find all available packages.
+🔍 **Search Packages:** Use our web-based package search engine at **[repo.t4nlabs.web.id/site/security.html](https://repo.t4nlabs.web.id/site/security.html)** to easily browse, filter, and find all available packages.
 
 ## Supported Architectures
 - `x86_64` (64-bit PC)
@@ -17,7 +17,7 @@ Follow these 3 easy steps to start using the T4n OS repository:
 **1. Add the repository configuration**  
 Match your system's architecture (example below for `x86_64`):
 ```bash
-echo 'repository=https://t4n-labs.github.io/repo-glibc/x86_64' | sudo tee /etc/xbps.d/10-glibc.conf
+echo 'repository=https://t4n-labs.github.io/repo-security/x86_64' | sudo tee /etc/xbps.d/10-security.conf
 ```
 
 **2. Synchronize the package database**  
@@ -35,7 +35,7 @@ sudo xbps-install package_name
 
 **^ Auto Install**
 ```sh
-curl -sL https://t4n-labs.github.io/repo-glibc/install.sh | sudo sh
+curl -sL https://t4n-labs.github.io/repo-security/install.sh | sudo sh
 ```
 
 ## Complete Documentation

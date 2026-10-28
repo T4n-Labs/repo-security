@@ -1,8 +1,8 @@
-# T4n OS Repository — glibc • [EN](README.md)
+# T4n OS Repository — security • [EN](README.md)
 
-Repositori paket XBPS (X Binary Package System) resmi untuk **T4n OS** berbasis `glibc`. Repositori ini menyediakan paket biner yang telah dikompilasi, ditandatangani secara otomatis, dan siap digunakan untuk berbagai arsitektur.
+Repositori paket XBPS (X Binary Package System) resmi untuk **T4n OS** berbasis `security`. Repositori ini menyediakan paket biner yang telah dikompilasi, ditandatangani secara otomatis, dan siap digunakan untuk berbagai arsitektur.
 
-🔍 **Cari Paket:** Gunakan mesin pencari paket web kami di **[repo.t4nlabs.web.id/site/glibc.html](https://repo.t4nlabs.web.id/site/glibc.html)** untuk menjelajahi semua paket yang tersedia dengan mudah.
+🔍 **Cari Paket:** Gunakan mesin pencari paket web kami di **[repo.t4nlabs.web.id/site/security.html](https://repo.t4nlabs.web.id/site/security.html)** untuk menjelajahi semua paket yang tersedia dengan mudah.
 
 ## Arsitektur yang Didukung
 - `x86_64` (PC 64-bit)
@@ -17,7 +17,7 @@ Ikuti 3 langkah mudah ini untuk mulai menggunakan repositori T4n OS:
 **1. Tambahkan konfigurasi repositori**  
 Sesuaikan dengan arsitektur sistem Anda (contoh di bawah untuk `x86_64`):
 ```bash
-echo 'repository=https://t4n-labs.github.io/repo-glibc/x86_64' | sudo tee /etc/xbps.d/10-glibc.conf
+echo 'repository=https://t4n-labs.github.io/repo-security/x86_64' | sudo tee /etc/xbps.d/10-security.conf
 ```
 
 **2. Sinkronisasi database paket**  
@@ -35,7 +35,7 @@ sudo xbps-install package_name
 
 **^ Auto Install**
 ```sh
-curl -sL https://t4n-labs.github.io/repo-glibc/install.sh | sudo sh
+curl -sL https://t4n-labs.github.io/repo-security/install.sh | sudo sh
 ```
 
 ## Dokumentasi Lengkap

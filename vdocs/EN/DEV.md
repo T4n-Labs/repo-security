@@ -1,6 +1,6 @@
 # T4n OS Repository - Developer & Maintainer Guide
 
-Welcome to the T4n OS repository infrastructure. This document is intended for developers and maintainers who want to build, package, and deploy software to the T4n OS repositories (`repo-glibc`).
+Welcome to the T4n OS repository infrastructure. This document is intended for developers and maintainers who want to build, package, and deploy software to the T4n OS repositories (`repo-security`).
 
 ## 1. Repository Structure
 
@@ -39,7 +39,7 @@ Before contributing, ensure you have:
 
 ## 3. Supported Architectures
 
-This repository **strictly supports 5 glibc architectures**:
+This repository **strictly supports 5 security architectures**:
 
 | No | Architecture | Description |
 |----|--------------|-------------|
@@ -142,9 +142,9 @@ do_install() {
 ```
 
 ### `archs` Parsing Rules:
-- **No `archs` defined** → Supports all 5 glibc architectures.
-- **Standard token** (`x86_64`) → glibc only.
-- **Token with `*`** (`x86_64*`) → The `*` is stripped; remains glibc only.
+- **No `archs` defined** → Supports all 5 security architectures.
+- **Standard token** (`x86_64`) → security only.
+- **Token with `*`** (`x86_64*`) → The `*` is stripped; remains security only.
 - **Token with `-musl`** (`x86_64-musl`) → The `-musl` suffix is stripped; becomes `x86_64`.
 
 ## 6. CI/CD Pipeline (GitHub Actions)
@@ -215,7 +215,7 @@ ssh-keygen -t rsa -b 4096 -m PEM -f private.pem -N ""
 ### Adding to GitHub Secrets
 Use the GitHub CLI to securely inject the key into the repository:
 ```bash
-gh secret set SIGN_KEY -R T4n-Labs/repo-glibc < private.pem
+gh secret set SIGN_KEY -R T4n-Labs/repo-security < private.pem
 ```
 
 > ️ **CRITICAL SECURITY WARNINGS**:

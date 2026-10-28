@@ -1,22 +1,22 @@
 #!/bin/sh
 # ============================================================
-# T4n OS — Repository Installer (repo-glibc, khusus glibc)
+# T4n OS — Repository Installer (repo-security, khusus security)
 #
 # Disarankan: unduh, baca, lalu jalankan
-#   curl -sLO https://t4n-labs.github.io/repo-glibc/install.sh
+#   curl -sLO https://t4n-labs.github.io/repo-security/install.sh
 #   sudo sh install.sh
 #
 # Atau langsung:
-#   curl -sL https://t4n-labs.github.io/repo-glibc/install.sh | sudo sh
+#   curl -sL https://t4n-labs.github.io/repo-security/install.sh | sudo sh
 # ============================================================
 
 set -eu
 
 # --- Konfigurasi -------------------------------------------------
 URL_SITE="https://repo.t4nlabs.web.id/"
-REPO_NAME="repo-glibc"
-REPO_URL="https://t4n-labs.github.io/repo-glibc"      # tanpa "/" di akhir
-CONF_FILE="${CONF_FILE:-/etc/xbps.d/10-glibc.conf}"
+REPO_NAME="repo-security"
+REPO_URL="https://t4n-labs.github.io/repo-security"      # tanpa "/" di akhir
+CONF_FILE="${CONF_FILE:-/etc/xbps.d/10-security.conf}"
 
 # Fingerprint resmi kunci repository, PERSIS seperti yang ditampilkan XBPS
 # saat sync pertama (jalankan `sudo xbps-install -S` sekali, lalu salin ke sini).
@@ -59,7 +59,7 @@ case "$ARCH" in
         ok "Arsitektur $ARCH didukung."
         ;;
     *)
-        err "Arsitektur $ARCH tidak didukung. Repository ini khusus glibc:"
+        err "Arsitektur $ARCH tidak didukung. Repository ini khusus security:"
         echo "  x86_64, i686, aarch64, armv6l, armv7l"
         exit 1
         ;;
@@ -80,7 +80,7 @@ info "[2/2] Menyinkronkan database paket..."
 echo ""
 if [ "$FINGERPRINT" = "<ISI-SETELAH-SYNC-PERTAMA>" ]; then
     warn "Fingerprint resmi belum dicantumkan di skrip ini."
-    echo "  Bandingkan dengan yang tertulis di https://github.com/T4n-Labs/repo-glibc"
+    echo "  Bandingkan dengan yang tertulis di https://github.com/T4n-Labs/repo-security"
 else
     echo "  Fingerprint resmi : $FINGERPRINT"
     echo "  Jawab 'yes' HANYA jika fingerprint yang ditampilkan XBPS persis sama."

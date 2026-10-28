@@ -2,7 +2,7 @@
 
 Selamat datang di Repositori T4n OS. Repositori ini menyediakan paket biner (`.xbps`) yang dikompilasi, ditandatangani secara kriptografis, dan dipelihara secara resmi untuk sistem T4n OS dan Void Linux.
 
-🔍 **Mesin Pencari Paket Web:** Jelajahi, filter, dan temukan semua paket yang tersedia dengan mudah di **[repo.t4nlabs.web.id/site/glibc.html](https://repo.t4nlabs.web.id/site/glibc.html)**.
+🔍 **Mesin Pencari Paket Web:** Jelajahi, filter, dan temukan semua paket yang tersedia dengan mudah di **[repo.t4nlabs.web.id/site/security.html](https://repo.t4nlabs.web.id/site/security.html)**.
 
 ##  Arsitektur yang Didukung
 Repositori kami dibangun untuk mendukung berbagai arsitektur perangkat keras:
@@ -19,7 +19,7 @@ Anda dapat menambahkan repositori menggunakan penginstal otomatis kami (Direkome
 Cukup jalankan perintah satu baris ini di terminal Anda. Perintah ini akan secara otomatis mendeteksi arsitektur Anda, menambahkan repositori, dan mengimpor kunci tanda tangan publik:
 
 ```bash
-curl -sL https://t4n-labs.github.io/repo-glibc/install.sh | sudo sh
+curl -sL https://t4n-labs.github.io/repo-security/install.sh | sudo sh
 ```
 
 ### Opsi B: Pengaturan Manual
@@ -33,13 +33,13 @@ Pilih perintah yang sesuai dengan arsitektur sistem Anda:
 
 ```bash
 # Untuk x86_64 (PC 64-bit Standar)
-echo 'repository=https://t4n-labs.github.io/repo-glibc/x86_64' | sudo tee /etc/xbps.d/10-glibc.conf
+echo 'repository=https://t4n-labs.github.io/repo-security/x86_64' | sudo tee /etc/xbps.d/10-security.conf
 
 # Untuk i686 (PC 32-bit)
-echo 'repository=https://t4n-labs.github.io/repo-glibc/i686' | sudo tee /etc/xbps.d/10-glibc.conf
+echo 'repository=https://t4n-labs.github.io/repo-security/i686' | sudo tee /etc/xbps.d/10-security.conf
 
 # Untuk aarch64 (ARM 64-bit)
-echo 'repository=https://t4n-labs.github.io/repo-glibc/aarch64' | sudo tee /etc/xbps.d/10-glibc.conf
+echo 'repository=https://t4n-labs.github.io/repo-security/aarch64' | sudo tee /etc/xbps.d/10-security.conf
 ```
 *(Catatan: Kami juga memelihara `repo-musl`, `repo-server`, dan `repo-security`. Sesuaikan URL dan nama file `.conf` jika Anda menggunakan repositori tersebut.)*
 
@@ -68,7 +68,7 @@ sudo xbps-install nama_paket
 
 ## 3. Menggunakan Mesin Pencari Paket Web
 
-Kami menyediakan antarmuka web yang cepat dan ringan untuk menjelajahi dan mencari semua paket yang tersedia di **[repo.t4nlabs.web.id/site/glibc.html](https://repo.t4nlabs.web.id/site/glibc.html)**.
+Kami menyediakan antarmuka web yang cepat dan ringan untuk menjelajahi dan mencari semua paket yang tersedia di **[repo.t4nlabs.web.id/site/security.html](https://repo.t4nlabs.web.id/site/security.html)**.
 
 **Fitur Utama:**
 - **Pencarian Langsung (Live Search):** Memfilter paket secara instan saat Anda mengetik (dengan *debounce* 110ms untuk performa yang mulus).
@@ -85,7 +85,7 @@ Kami menyediakan antarmuka web yang cepat dan ringan untuk menjelajahi dan menca
 Jika Anda tidak lagi ingin menggunakan repositori T4n OS, cukup hapus file konfigurasi dan sinkronisasi ulang:
 
 ```bash
-sudo rm /etc/xbps.d/10-glibc.conf
+sudo rm /etc/xbps.d/10-security.conf
 sudo xbps-install -S
 ```
 

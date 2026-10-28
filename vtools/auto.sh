@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================
-# T4n OS — AUTO BUILD & DEPLOY SCRIPT (repo-glibc ONLY)
+# T4n OS — AUTO BUILD & DEPLOY SCRIPT (repo-security ONLY)
 # Lokasi : vtools/auto.sh
 # Fungsi : Setup Env, Sync Template, Auto Build, Auto Copy + Cleanup
 # ============================================================
@@ -11,7 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 VOID_PKGS_DIR="${REPO_DIR}/void-packages"
 
-# HANYA 5 ARSITEKTUR GLIBC YANG DIDUKUNG
+# HANYA 5 ARSITEKTUR SECURITY YANG DIDUKUNG
 HOST_ARCH="$(uname -m)"
 ALL_SUPPORTED_ARCHS="x86_64 armv6l armv7l aarch64 i686"
 
@@ -37,7 +37,7 @@ is_supported_arch() {
 }
 
 # Usage : resolve_archs /path/ke/template
-# Aturan: Hanya mengambil 5 arsitektur glibc. Mengabaikan musl atau arsitektur lain.
+# Aturan: Hanya mengambil 5 arsitektur security. Mengabaikan musl atau arsitektur lain.
 resolve_archs() {
     local template="$1" line token a result=""
     
@@ -46,7 +46,7 @@ resolve_archs() {
     | sed -E "s/^[^=]*=//; s/#.*\$//; s/[\"']//g" || true)
     line=$(echo "$line" | tr ',' ' ' | xargs || true)
 
-    # Tidak ada archs -> support semua 5 arch glibc
+    # Tidak ada archs -> support semua 5 arch security
     if [ -z "$line" ]; then
         echo "$ALL_SUPPORTED_ARCHS"
         return 0
@@ -306,7 +306,7 @@ copy_pkgs() {
         # Ekstrak nama package (tanpa versi dan arch)
         pkg_name="$(extract_pkg_name "$base")"
 
-        # noarch -> salin ke 5 folder arsitektur glibc + cleanup
+        # noarch -> salin ke 5 folder arsitektur security + cleanup
         if [[ "$arch" == "noarch" ]]; then
             for a in x86_64 armv6l armv7l aarch64 i686; do
                 DEST_DIR="$REPO_DIR/$a"
@@ -364,7 +364,7 @@ case "$1" in
         ;;
     *)
         echo -e "${BLUE}============================================================${NC}"
-        echo -e "${BLUE}  T4n OS — Repository Automation Script (repo-glibc)${NC}"
+        echo -e "${BLUE}  T4n OS — Repository Automation Script (repo-security)${NC}"
         echo -e "${BLUE}============================================================${NC}"
         echo "Penggunaan: ./vtools/auto.sh [OPTIONS]"
         echo ""

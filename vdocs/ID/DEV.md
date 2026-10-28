@@ -1,6 +1,6 @@
 # T4n OS Repository - Panduan Developer & Maintainer
 
-Selamat datang di infrastruktur repositori T4n OS. Dokumen ini ditujukan untuk developer dan maintainer yang ingin membangun, mengemas, dan mendeploy perangkat lunak ke repositori T4n OS (`repo-glibc`).
+Selamat datang di infrastruktur repositori T4n OS. Dokumen ini ditujukan untuk developer dan maintainer yang ingin membangun, mengemas, dan mendeploy perangkat lunak ke repositori T4n OS (`repo-security`).
 
 ## 1. Struktur Repositori
 
@@ -39,7 +39,7 @@ Sebelum berkontribusi, pastikan Anda memiliki:
 
 ## 3. Arsitektur yang Didukung
 
-Repositori ini **hanya mendukung 5 arsitektur glibc**:
+Repositori ini **hanya mendukung 5 arsitektur security**:
 
 | No | Arsitektur | Keterangan |
 |----|------------|------------|
@@ -146,9 +146,9 @@ do_install() {
 
 ### Aturan Parsing `archs`:
 
-- **Tidak ada `archs`** → Support semua 5 arsitektur glibc
-- **Token biasa** (`x86_64`) → Hanya glibc
-- **Token dengan `*`** (`x86_64*`) → Tanda `*` dihapus, tetap hanya glibc
+- **Tidak ada `archs`** → Support semua 5 arsitektur security
+- **Token biasa** (`x86_64`) → Hanya security
+- **Token dengan `*`** (`x86_64*`) → Tanda `*` dihapus, tetap hanya security
 - **Token dengan `-musl`** (`x86_64-musl`) → Suffix `-musl` dihapus, menjadi `x86_64`
 
 > 💡 **Tips**: Variabel `archs` diparsing secara ketat oleh `auto.sh`. Pastikan formatnya benar (dipisahkan dengan spasi).
@@ -226,7 +226,7 @@ ssh-keygen -t rsa -b 4096 -m PEM -f private.pem -N ""
 Gunakan GitHub CLI untuk menyuntikkan kunci secara aman ke repositori:
 
 ```bash
-gh secret set SIGN_KEY -R T4n-Labs/repo-glibc < private.pem
+gh secret set SIGN_KEY -R T4n-Labs/repo-security < private.pem
 ```
 
 > ⚠️ **PERINGATAN KEAMANAN KRITIS**:

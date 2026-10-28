@@ -2,7 +2,7 @@
 
 Welcome to the **T4n OS Repository**. This repository provides officially compiled, signed, and maintained binary packages (`.xbps`) for T4n OS and Void Linux systems.
 
- **Web Package Search Engine:** Browse, filter, and find all available packages easily at **[repo.t4nlabs.web.id/site/glibc.html](https://repo.t4nlabs.web.id/site/glibc.html)**.
+ **Web Package Search Engine:** Browse, filter, and find all available packages easily at **[repo.t4nlabs.web.id/site/security.html](https://repo.t4nlabs.web.id/site/security.html)**.
 
 
 ## Supported Architectures
@@ -20,7 +20,7 @@ You can add the repository using our automated installer (Recommended) or manual
 Simply run this one-line command in your terminal. It will automatically detect your architecture, add the repository, and import the public signing key:
 
 ```bash
-curl -sL https://t4n-labs.github.io/repo-glibc/install.sh | sudo sh
+curl -sL https://t4n-labs.github.io/repo-security/install.sh | sudo sh
 ```
 
 ### Option B: Manual Setup
@@ -34,13 +34,13 @@ Choose the command that matches your system's architecture:
 
 ```bash
 # For x86_64 (Standard 64-bit PC)
-echo 'repository=https://t4n-labs.github.io/repo-glibc/x86_64' | sudo tee /etc/xbps.d/10-glibc.conf
+echo 'repository=https://t4n-labs.github.io/repo-security/x86_64' | sudo tee /etc/xbps.d/10-security.conf
 
 # For i686 (32-bit PC)
-echo 'repository=https://t4n-labs.github.io/repo-glibc/i686' | sudo tee /etc/xbps.d/10-glibc.conf
+echo 'repository=https://t4n-labs.github.io/repo-security/i686' | sudo tee /etc/xbps.d/10-security.conf
 
 # For aarch64 (64-bit ARM)
-echo 'repository=https://t4n-labs.github.io/repo-glibc/aarch64' | sudo tee /etc/xbps.d/10-glibc.conf
+echo 'repository=https://t4n-labs.github.io/repo-security/aarch64' | sudo tee /etc/xbps.d/10-security.conf
 ```
 *(Note: We also maintain `repo-musl`, `repo-server`, and `repo-security`. Adjust the URL and `.conf` filename accordingly if you are using those.)*
 
@@ -69,7 +69,7 @@ sudo xbps-install package_name
 
 ## 3. Using the Web Package Search Engine
 
-We provide a fast, lightweight web interface to browse and search all available packages at **[repo.t4nlabs.web.id/site/glibc.html](https://repo.t4nlabs.web.id/site/glibc.html)**.
+We provide a fast, lightweight web interface to browse and search all available packages at **[repo.t4nlabs.web.id/site/security.html](https://repo.t4nlabs.web.id/site/security.html)**.
 
 **Key Features:**
 - **Live Search:** Instantly filter packages as you type (with a 110ms debounce for smooth performance).
@@ -86,7 +86,7 @@ We provide a fast, lightweight web interface to browse and search all available 
 If you no longer wish to use the T4n OS repository, simply remove the configuration file and resynchronize:
 
 ```bash
-sudo rm /etc/xbps.d/10-glibc.conf
+sudo rm /etc/xbps.d/10-security.conf
 sudo xbps-install -S
 ```
 
